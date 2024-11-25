@@ -1,0 +1,156 @@
+IMPORTING NUMPY
+import numpy as np 
+array_1d = np.array([1, 2, 3, 4]) 
+array_2d = np.array([[1, 2], [3, 4]])
+
+
+NUMPY ARANGE
+arr = np.arange(5) 
+# Output: [0 1 2 3 4] 
+arr = np.arange(1, 10)
+# Output: [1 2 3 4 5 6 7 8 9]
+arr = np.arange(1, 10, 2)
+# Output: [1 3 5 7 9]
+
+NUMPY DATATYPES
+c = np.array([1.1, 2.2, 3.3], dtype=np.float64) print(c.dtype)
+g = np.array([1, 'a', 3.14], dtype=np.object_) print(g.dtype)
+Also datatype can be
+dtype=np.complex128
+dtype=np.bool_ 
+
+NUMPY INDEXING AND SLICING
+
+INDEXING
+array_1d = np.array([10, 20, 30])
+print(array_1d[1]) 
+Output: 20 
+
+SLICING
+array_2d = np.array([[1, 2, 3], [4, 5, 6]])
+slice_2d = array_2d[0:2, 1:3]
+print(slice_2d)
+Output: 
+ [[2 3] 
+ [5 6]]
+
+ADVANCED INDEXING
+Boolean Indexing:
+Select elements based on conditions.
+array_1d = np.array([10, 20, 30])
+bool_idx = array_1d > 20 
+print(array_1d[bool_idx])
+Output : 30
+Fancy Indexing:
+Use arrays of indices to access elements.
+fancy_idx = array_2d[[0, 1], [1, 2]] print(fancy_idx) # Output: [2 6]
+
+NUMPY ELEMENTWISE OPERATION
+
+Arithmetic Operations
+Addition
+result = array1 + array2
+Exponentiation 
+result = array1 ** array2
+Modulo
+result = array1 % array2
+Floor Division
+result = array1 // array2
+
+Logical Operations 
+Logical XOR
+result = np.logical_xor(array1, array2)
+
+Comparison Operations
+Not equal
+result = array1 != array2
+
+
+Reduction Operations
+Sum (np.sum): Adds all elements.
+result = np.sum(array)
+Minimum (np.min): Finds the smallest element.
+result = np.min(array)
+Maximum (np.max): Finds the largest element.
+result = np.max(array)
+Mean (np.mean): Computes the average of elements.
+result = np.mean(array)
+Median (np.median): Finds the median value.
+result = np.median(array)
+Standard Deviation (np.std): Measures spread from the mean.
+result = np.std(array)
+Variance (np.var): Measures the average squared deviation from the mean.
+result = np.var(array)
+Product (np.prod): Multiplies all elements.
+result = np.prod(array)
+Cumulative Sum (np.cumsum): Computes the cumulative sum of elements.
+result = np.cumsum(array)
+Cumulative Product (np.cumprod): Computes the cumulative product of elements.
+result = np.cumprod(array)
+
+NUMPY AND COPY AND VIEW
+Copy: Creates a new array and any modifications to the new array do not affect the original array.
+original = np.array([1, 2, 3])
+copy = original.copy()
+copy[0] = 99
+print(original)  # Output: [1 2 3]
+print(copy)      # Output: [99 2 3]
+
+View: Creates a new array that is a view of the original array. Changes to the view affect the original array.
+view = original.view()
+view[0] = 99
+print(original)  # Output: [99 2 3]
+print(view)      # Output: [99 2 3]
+
+BROADCASTING IN NUMPY
+Broadcasting is a feature in NumPy that allows you to perform arithmetic operations on arrays of different shapes.
+
+import numpy as np
+
+# Array of shape (3, 1)
+array1 = np.array([[1], [2], [3]])
+
+# Array of shape (3,)
+array2 = np.array([4, 5, 6])
+
+# Broadcasting occurs here
+result = array1 + array2
+# Output: [[5, 6, 7], [6, 7, 8], [7, 8, 9]]
+
+NUMPY ARRAY AND SHAPE MANIPULATION
+
+Shape Manipulation
+Reshape (np.reshape): Change the shape of an array.
+array = np.array([1, 2, 3, 4, 5, 6])
+reshaped = array.reshape(2, 3)  # Output: [[1, 2, 3], [4, 5, 6]]
+
+Flatten (np.flatten): Convert a multi-dimensional array to a one-dimensional array.
+array = np.array([[1, 2, 3], [4, 5, 6]])
+flattened = array.flatten()  # Output: [1, 2, 3, 4, 5, 6]
+
+Ravel (np.ravel): Return a flattened array.
+array = np.array([[1, 2, 3], [4, 5, 6]])
+raveled = np.ravel(array)  # Output: [1, 2, 3, 4, 5, 6]
+
+Transpose (np.transpose): Reverse or permute the axes of an array.
+array = np.array([[1, 2, 3], [4, 5, 6]])
+transposed = np.transpose(array)  # Output: [[1, 4], [2, 5], [3, 6]]
+
+Resize (np.resize): Change the shape and size of an array.
+array = np.array([1, 2, 3])
+resized = np.resize(array, (2, 3))  # Output: [[1, 2, 3], [1, 2, 3]]
+
+Expand Dimensions (np.expand_dims): Expand the shape of an array.
+array = np.array([1, 2, 3])
+expanded = np.expand_dims(array, axis=0)  # Output: [[1, 2, 3]]
+
+Squeeze (np.squeeze): Remove single-dimensional entries from the shape of an array.
+array = np.array([[[1, 2, 3]]])
+squeezed = np.squeeze(array)  # Output: [1, 2, 3]
+
+Adding New Dimensions
+Using np.expand_dims: Add a new axis.
+new_array = np.expand_dims(array, axis=1)  # Adds a new axis
+
+Using None or np.newaxis: Insert a new axis directly.
+new_array = array[:, np.newaxis]  # Adds a new axis
